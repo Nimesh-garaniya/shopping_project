@@ -1,0 +1,19 @@
+{% extends 'test/buttons.html' %}
+
+{% block main-content %}
+<h3>Get session:</h3>
+<hr>
+<p>keys: </p>{{keys|length}}-------------
+{% for key in keys %}
+  {{key}} --
+{% endfor %}
+<hr>
+<p> values: </p>
+<h4>{{fname}} -- {{mname}} -- {{lname}} --</h4>
+<hr>
+<p>items: </p>
+{% for item in items %}
+{{item}}<br>
+{% endfor %}
+<hr>
+{% endblock main-content %}

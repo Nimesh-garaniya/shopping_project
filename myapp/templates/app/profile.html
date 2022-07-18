@@ -1,0 +1,49 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block header %}
+  <div class=" " style="background: #212529">
+  <button type="button" class="btn btn-secondary mb-2" style="width: 160px; height: 35px; margin-left: 40px">
+   Your IP: <span class="badge bg-dark">{{ip}}</span>
+  </button>
+  <button type="button" class="btn btn-success mx-2 mb-2" style="width: 150px; height: 35px">
+   Login times: <span class="badge bg-dark">{{count}}</span>
+  </button>
+  </div>
+  {% endblock header %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+
+ <h3>Welcome <span class="text-capitalize">{{request.user}}</span></h3>
+  <hr>
+  <div class="col-sm-2 border-end">
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'profile' %}" class="btn mb-2 {{active}}">Profile</a></li>
+    <li class="d-grid"><a href="{% url 'address' %}" class="btn">Address</a></li>
+   </ul>
+  </div>
+  <div class="col-sm-8 offset-sm-1">
+   {% if messages %}
+     {% for message in messages %}
+      <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
+     {% endfor %}
+    {% endif %}
+   <form action="" method="post" novalidate>
+    {% csrf_token %}
+       {% for form in form %}
+    <div class="form-group">
+     {{form.label_tag}}
+     {{form}}
+     <small class="text-danger">{{form.errors|striptags}}</small>
+        <br>
+    </div>
+    {% endfor %}
+    <div class="col-12 mt-3">
+        <button type="submit" class="btn btn-primary mb-3">Submit</button>
+    </div>
+   </form>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}
