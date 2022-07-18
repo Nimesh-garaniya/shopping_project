@@ -25,3 +25,8 @@
 
 - go to register and login to add items to cart.
 - add user address in user profile for checkout.
+
+-----------------------------------------
+
+#### django sessions and cache practice: myapp/signals.py
+- templates/test/
